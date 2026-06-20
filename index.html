@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NWK SC e-Portfolio | โรงเรียนนครนายกวิทยาคม</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #5B2D8E;
+    --purple-dark: #3D1A6B;
+    --purple-light: #7C4DBF;
+    --pink: #D63384;
+    --pink-light: #F472B6;
+    --pink-pale: #FCE7F3;
+    --white: #FFFFFF;
+    --off-white: #FAF7FE;
+    --gray: #6B7280;
+    --dark: #1A0A2E;
+    --gold: #C9A227;
+    --gold-light: #F5D76E;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Sarabun', sans-serif; background: var(--off-white); color: var(--dark); line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(61,26,107,0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 58px;
+    box-shadow: 0 2px 20px rgba(91,45,142,0.4);
+  }
+  .nav-logo {
+    font-family: 'Mitr', sans-serif;
+    color: var(--pink-light);
+    font-size: 1rem; font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-logo .abbr {
+    background: linear-gradient(135deg, var(--purple-light), var(--pink));
+    color: white; font-size: 0.75rem; font-weight: 700;
+    padding: 0.15rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 0.15rem; flex-wrap: wrap; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.78rem; padding: 0.35rem 0.6rem; border-radius: 4px; transition: all 0.2s;
+  }
+  .nav-links a:hover { color: var(--pink-light); background: rgba(214,51,132,0.15); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--purple-dark) 0%, #2D0A5E 40%, #4A1080 70%, #7C1E5E 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(214,51,132,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(124,77,191,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(91,45,142,0.1) 0%, transparent 70%);
+  }
+  .school-crest-img {
+    width: 220px; height: 220px;
+    margin: 0 auto 1.5rem;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 0 30px rgba(214,51,132,0.5));
+  }
+  .school-crest-img img { width: 100%; height: 100%; object-fit: contain; }
+  .school-crest {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-light), var(--pink));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 0 40px rgba(214,51,132,0.4);
+    position: relative; z-index: 1;
+  }
+  .school-name-en {
+    font-size: 0.78rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; margin-bottom: 0.3rem; position: relative; z-index: 1;
+  }
+  .hero-title {
+    font-family: 'Mitr', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 600; color: var(--white); line-height: 1.2;
+    margin-bottom: 0.4rem; position: relative; z-index: 1;
+  }
+  .hero-title .pink { color: var(--pink-light); }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.65);
+    margin-bottom: 0.5rem; position: relative; z-index: 1;
+  }
+  .hero-motto {
+    font-size: 0.85rem; color: var(--gold-light);
+    font-style: italic; margin-bottom: 0.2rem; position: relative; z-index: 1;
+  }
+  .hero-motto-th {
+    font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    margin-bottom: 2.5rem; position: relative; z-index: 1;
+  }
+  .hero-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.7rem; max-width: 750px; width: 100%;
+    position: relative; z-index: 1;
+  }
+  .hero-nav-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 0.9rem 0.7rem;
+    text-decoration: none; color: var(--white);
+    font-size: 0.8rem; font-weight: 500;
+    transition: all 0.25s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
+  }
+  .hero-nav-card:hover {
+    background: rgba(214,51,132,0.2);
+    border-color: var(--pink-light);
+    transform: translateY(-3px);
+    color: var(--pink-light);
+  }
+  .hero-nav-card .icon { font-size: 1.5rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  section:nth-child(odd) { background: var(--white); }
+  section:nth-child(even) { background: var(--off-white); }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--pink); margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: 'Mitr', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 600; color: var(--purple-dark); margin-bottom: 0.5rem;
+  }
+  .section-title .accent { color: var(--pink); }
+  .divider {
+    width: 55px; height: 4px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    border-radius: 2px; margin-bottom: 2rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem; margin-top: 0.5rem;
+  }
+  .about-card {
+    background: linear-gradient(135deg, #FAF5FF, #FDF2F8);
+    border-radius: 12px; padding: 1.3rem;
+    border-left: 4px solid var(--purple-light);
+  }
+  .about-card h3 { color: var(--purple-dark); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem; }
+  .about-card p { color: var(--gray); font-size: 0.85rem; }
+
+  /* SCHOOL INFO STRIP */
+  .school-strip {
+    background: linear-gradient(135deg, var(--purple-dark), #5B1A8A);
+    border-radius: 14px; padding: 1.5rem 2rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .strip-item { text-align: center; }
+  .strip-item .s-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+  .strip-item .s-value { font-size: 0.9rem; color: white; font-weight: 600; margin-top: 0.2rem; display: flex; align-items: center; }
+  .strip-item .s-value.gold { color: var(--gold-light); }
+
+  /* STRUCTURE */
+  .org-chart-img {
+    width: 100%;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(91,45,142,0.15);
+  }
+  .org-chart-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .org-chart { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 1.5rem 0; }
+  .org-level { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; width: 100%; }
+  .org-card {
+    background: var(--purple-dark); color: white;
+    border-radius: 10px; padding: 0.75rem 1.2rem;
+    text-align: center; font-size: 0.82rem; font-weight: 600; min-width: 130px;
+  }
+  .org-card.president { background: linear-gradient(135deg, var(--pink), #a01060); }
+  .org-card.vp { background: linear-gradient(135deg, var(--purple-light), #4a1a7a); }
+  .org-card.committee { background: rgba(91,45,142,0.6); border: 1px solid rgba(196,98,209,0.3); font-size: 0.78rem; }
+  .org-connector { width: 2px; height: 28px; background: linear-gradient(to bottom, var(--pink), var(--purple-light)); }
+
+  /* DEMOCRACY */
+  .demo-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .demo-item {
+    background: white; border-radius: 10px; padding: 1.2rem;
+    text-align: center; border: 1px solid #E9D5FF; transition: all 0.2s;
+  }
+  .demo-item:hover { border-color: var(--pink); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(214,51,132,0.15); }
+  .demo-item .di-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .demo-item h4 { font-size: 0.82rem; font-weight: 700; color: var(--purple-dark); }
+
+  .timeline {
+    display: flex; gap: 0.7rem; overflow-x: auto; padding: 1rem 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .tl-step {
+    min-width: 120px; background: rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 0.9rem; text-align: center;
+    flex-shrink: 0;
+  }
+  .tl-step .tl-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; }
+  .tl-step .tl-text { font-size: 0.8rem; color: rgba(255,255,255,0.85); margin-top: 0.3rem; }
+
+  /* INDICATORS */
+  .indicator-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+  .tab-btn {
+    padding: 0.45rem 0.9rem; border-radius: 6px;
+    border: 2px solid transparent;
+    background: #F3E8FF; color: var(--purple-dark);
+    font-size: 0.78rem; font-weight: 600; cursor: pointer;
+    font-family: 'Sarabun', sans-serif; transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--purple-dark); color: white; }
+  .tab-btn:hover:not(.active) { border-color: var(--purple-light); }
+  .indicator-panel { display: none; }
+  .indicator-panel.active { display: block; }
+  .indicator-content { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #E9D5FF; }
+  .indicator-content h3 { color: var(--purple-dark); font-size: 1rem; margin-bottom: 1rem; }
+  .indicator-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .indicator-list li {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.86rem; color: var(--gray);
+    background: #FAF5FF; padding: 0.55rem 0.9rem; border-radius: 6px;
+  }
+  .indicator-list li::before { content: '✦'; color: var(--pink); font-size: 0.75rem; flex-shrink: 0; }
+
+  /* REFLECTION */
+  .reflection-box {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, #5B1A8A 60%, #8B1A5E 100%);
+    border-radius: 16px; padding: 2.5rem; color: white; position: relative; overflow: hidden;
+  }
+  .reflection-box::before {
+    content: '"';
+    position: absolute; top: -1rem; left: 1.5rem;
+    font-size: 9rem; color: rgba(246,114,182,0.12);
+    font-family: Georgia, serif; line-height: 1;
+  }
+  .reflection-quote {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    font-weight: 300; line-height: 2; color: rgba(255,255,255,0.9);
+    font-style: italic; position: relative; z-index: 1;
+    border-left: 3px solid var(--pink-light); padding-left: 1rem;
+  }
+  .reflection-aspects {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.9rem; margin-top: 2rem;
+  }
+  .reflection-aspect {
+    background: rgba(255,255,255,0.08); border-radius: 8px;
+    padding: 1rem; border: 1px solid rgba(246,114,182,0.2);
+  }
+  .reflection-aspect h4 { color: var(--pink-light); font-size: 0.8rem; margin-bottom: 0.3rem; }
+  .reflection-aspect p { color: rgba(255,255,255,0.65); font-size: 0.78rem; }
+
+  /* ACHIEVEMENT */
+  .achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+  .achievement-card {
+    border-radius: 12px; padding: 1.5rem 1rem;
+    text-align: center; transition: transform 0.2s;
+  }
+  .achievement-card:hover { transform: translateY(-4px); }
+  .achievement-card:nth-child(1) { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+  .achievement-card:nth-child(2) { background: linear-gradient(135deg, #F3E8FF, #E9D5FF); }
+  .achievement-card:nth-child(3) { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
+  .achievement-card:nth-child(4) { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); }
+  .achievement-card:nth-child(5) { background: linear-gradient(135deg, #EDE9FE, #DDD6FE); }
+  .achievement-card .ac-icon { font-size: 2.3rem; margin-bottom: 0.6rem; }
+  .achievement-card h4 { font-weight: 700; font-size: 0.87rem; color: var(--dark); }
+
+  /* CONTACT */
+  #contact { background: linear-gradient(135deg, var(--purple-dark), #3D0A6B) !important; }
+  #contact .section-label { color: var(--pink-light); }
+  #contact .section-title { color: white; }
+  #contact .divider { background: linear-gradient(90deg, var(--pink), var(--purple-light)); }
+  .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .contact-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 1.4rem; color: white; transition: all 0.2s;
+  }
+  .contact-card:hover { background: rgba(214,51,132,0.15); border-color: var(--pink-light); }
+  .contact-card .cc-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+  .contact-card h4 { font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--pink-light); }
+  .contact-card p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  .color-dots { display: flex; gap: 0.5rem; margin-top: 0; align-items: center; }
+  .color-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
+
+  footer { background: #15002E; color: rgba(255,255,255,0.35); text-align: center; padding: 1.5rem; font-size: 0.78rem; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.png" alt="น.ว.ค." style="height:36px;width:36px;object-fit:contain;" />
+    NWK SC e-Portfolio
+  </div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#structure">Structure</a>
+    <a href="#democracy">Democracy</a>
+    <a href="#indicators">Indicators</a>
+    <a href="#reflection">Reflection</a>
+    <a href="#achievement">Achievement</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="school-crest-img"><img src="logo.png" alt="โลโก้คณะกรรมการสภานักเรียน" /></div>
+  <div class="school-name-en">Nakhonnayok Witthayakhom School · Est. 2460</div>
+  <h1 class="hero-title">คณะกรรมการสภานักเรียน<br><span class="pink">โรงเรียนนครนายกวิทยาคม</span></h1>
+  <p class="hero-sub">e-Portfolio คณะกรรมการสภานักเรียน โรงเรียนนครนายกวิทยาคม</p>
+  <p class="hero-motto">รกฺเขยฺย อตฺตโน สาธุ ลวณํ โลณตํ ยถา</p>
+  <p class="hero-motto-th">พึงรักษาความดีของตนไว้ ดุจเกลือรักษาความเค็ม</p>
+  <div class="hero-nav-grid">
+    <a href="#about" class="hero-nav-card"><span class="icon">📋</span>ข้อมูลทั่วไป</a>
+    <a href="#structure" class="hero-nav-card"><span class="icon">🏗️</span>โครงสร้าง</a>
+    <a href="#democracy" class="hero-nav-card"><span class="icon">🗳️</span>ประชาธิปไตย</a>
+    <a href="#indicators" class="hero-nav-card"><span class="icon">📊</span>ตัวชี้วัด A–E</a>
+    <a href="#reflection" class="hero-nav-card"><span class="icon">💭</span>สิ่งที่เรียนรู้</a>
+    <a href="#achievement" class="hero-nav-card"><span class="icon">🏆</span>ความสำเร็จ</a>
+    <a href="#contact" class="hero-nav-card"><span class="icon">📞</span>ติดต่อ</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">ข้อมูลทั่วไป<span class="accent">เกี่ยวกับโครงการ</span></h2>
+    <div class="divider"></div>
+
+    <div class="school-strip">
+      <div class="strip-item">
+        <div class="s-label">สถานศึกษา</div>
+        <div class="s-value gold">โรงเรียนนครนายกวิทยาคม</div>
+      </div>
+      <div class="strip-item">
+        <div class="s-label">จำนวนนักเรียน</div>
+        <div class="s-value gold">2,765 คน</div>
+      </div>
+      <div class="strip-item">
+        <div class="s-label">ก่อตั้ง</div>
+        <div class="s-value">พ.ศ. 2460</div>
+      </div>
+      <div class="strip-item">
+        <div class="s-label">สีประจำโรงเรียน</div>
+        <div class="s-value" style="display:flex; align-items:center; gap:0.6rem;">
+          <div class="color-dots" style="margin-top:0;">
+            <div class="color-dot" style="background:#7B2FBE;" title="ม่วง"></div>
+            <div class="color-dot" style="background:#E91E8C;" title="ชมพู"></div>
+          </div>
+          <span style="font-size:0.82rem;">ม่วง-ชมพู</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🎯 ความเป็นมา & ความสำคัญ</h3>
+        <p>คณะกรรมการสภานักเรียนโรงเรียนนครนายกวิทยาคมเป็นองค์กรที่ส่งเสริมการปกครองในระบอบประชาธิปไตย ให้นักเรียนได้ฝึกการมีส่วนร่วมและรับผิดชอบต่อส่วนรวม ตามปณิธานของโรงเรียนที่มีมากว่า 100 ปี</p>
+      </div>
+      <div class="about-card">
+        <h3>🎯 วัตถุประสงค์ & เป้าหมาย</h3>
+        <p>พัฒนาทักษะความเป็นผู้นำ ส่งเสริมการมีส่วนร่วม และสร้างจิตสาธารณะในหมู่นักเรียนทั้ง 2,765 คน มุ่งสร้างนักเรียนที่มีคุณธรรม ความรู้ และทักษะชีวิต ภายใต้สังกัด สพฐ.</p>
+      </div>
+      <div class="about-card">
+        <h3>🌐 แนวคิดประชาธิปไตย</h3>
+        <p>ยึดหลักการเลือกตั้งที่บริสุทธิ์ยุติธรรม ธรรมาภิบาล วินัยเชิงบวก และจิตสาธารณะ ภายใต้คำขวัญ "พึงรักษาความดีของตน"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section id="structure">
+  <div class="container">
+    <div class="section-label">Student Council Structure</div>
+    <h2 class="section-title">โครงสร้าง<span class="accent">คณะกรรมการสภานักเรียน</span></h2>
+    <div class="divider"></div>
+    <div class="org-chart-img">
+      <img src="structure.png" alt="โครงสร้างคณะกรรมการสภานักเรียน" />
+    </div>
+    <div style="margin-top:1.5rem; background:#FAF5FF; border-radius:10px; padding:1.2rem; border:1px solid #E9D5FF; display:flex; align-items:flex-start; gap:0.8rem;">
+      <span style="font-size:1.3rem;">🌳</span>
+      <div>
+        <p style="font-weight:700; font-size:0.87rem; color:var(--purple-dark);">สัญลักษณ์ประจำโรงเรียน</p>
+        <p style="font-size:0.82rem; color:var(--gray);">ต้นไม้: <strong>สักทอง</strong> &nbsp;|&nbsp; ดอกไม้: <strong>ชมพูพันธุ์ทิพย์</strong> &nbsp;|&nbsp; เพลง: <strong>มาร์ชนครนายกวิทยาคม</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMOCRACY -->
+<section id="democracy">
+  <div class="container">
+    <div class="section-label">Democracy Showcase</div>
+    <h2 class="section-title">การขับเคลื่อน<span class="accent">ประชาธิปไตย</span></h2>
+    <div class="divider"></div>
+    <div class="demo-items">
+      <div class="demo-item"><div class="di-icon">🗳️</div><h4>การเลือกตั้ง</h4></div>
+      <div class="demo-item"><div class="di-icon">🏛️</div><h4>การประชุม</h4></div>
+      <div class="demo-item"><div class="di-icon">🤝</div><h4>การมีส่วนร่วม</h4></div>
+      <div class="demo-item"><div class="di-icon">💬</div><h4>รับฟังความคิดเห็น</h4></div>
+      <div class="demo-item"><div class="di-icon">📢</div><h4>กิจกรรมส่งเสริมประชาธิปไตย</h4></div>
+    </div>
+    <div style="margin-top:2rem; background:linear-gradient(135deg, var(--purple-dark), #5B1A8A); border-radius:14px; padding:1.5rem; color:white;">
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-bottom:1rem; letter-spacing:0.05em;">📅 TIMELINE การเลือกตั้งคณะกรรมการสภานักเรียน น.ว.ค.</p>
+      <div class="timeline">
+        <div class="tl-step" style="border-top:3px solid var(--gold-light);">
+          <div class="tl-num" style="color:var(--gold-light);">ขั้นตอน 1</div>
+          <div class="tl-text">ประกาศรับสมัคร</div>
+        </div>
+        <div class="tl-step" style="border-top:3px solid #A78BFA;">
+          <div class="tl-num" style="color:#A78BFA;">ขั้นตอน 2</div>
+          <div class="tl-text">หาเสียงสร้างสรรค์</div>
+        </div>
+        <div class="tl-step" style="border-top:3px solid var(--pink-light);">
+          <div class="tl-num" style="color:var(--pink-light);">ขั้นตอน 3</div>
+          <div class="tl-text">ใช้สิทธิ์เลือกตั้ง</div>
+        </div>
+        <div class="tl-step" style="border-top:3px solid #6EE7A0;">
+          <div class="tl-num" style="color:#6EE7A0;">ขั้นตอน 4</div>
+          <div class="tl-text">นับคะแนนโปร่งใส</div>
+        </div>
+        <div class="tl-step" style="border-top:3px solid #FCA5A5;">
+          <div class="tl-num" style="color:#FCA5A5;">ขั้นตอน 5</div>
+          <div class="tl-text">ประกาศผลการเลือกตั้ง</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDICATORS A-E -->
+<section id="indicators">
+  <div class="container">
+    <div class="section-label">A–E Indicators</div>
+    <h2 class="section-title">ผลงาน<span class="accent">ตามตัวชี้วัด</span></h2>
+    <div class="divider"></div>
+    <div class="indicator-tabs">
+      <button class="tab-btn active" onclick="showTab('a',this)">A — Clean Election</button>
+      <button class="tab-btn" onclick="showTab('b',this)">B — Good Governance</button>
+      <button class="tab-btn" onclick="showTab('c',this)">C — Positive Discipline</button>
+      <button class="tab-btn" onclick="showTab('d',this)">D — Public Mind</button>
+      <button class="tab-btn" onclick="showTab('e',this)">E — Innovation</button>
+    </div>
+    <div id="panel-a" class="indicator-panel active">
+      <div class="indicator-content">
+        <h3>🗳️ Clean Election — ระบบและกระบวนการเลือกตั้งสุจริต</h3>
+        <ul class="indicator-list">
+          <li>ขั้นตอนการเลือกตั้งที่ชัดเจนและโปร่งใส</li>
+          <li>การหาเสียงอย่างสร้างสรรค์</li>
+          <li>การใช้สิทธิ์เลือกตั้งของนักเรียน</li>
+          <li>การนับคะแนนแบบโปร่งใส</li>
+          <li>ภาพกิจกรรมการเลือกตั้ง</li>
+        </ul>
+      </div>
+    </div>
+    <div id="panel-b" class="indicator-panel">
+      <div class="indicator-content">
+        <h3>🏛️ Good Governance — ธรรมาภิบาล</h3>
+        <ul class="indicator-list">
+          <li>การบริหารงานแบบมีส่วนร่วม</li>
+          <li>การประชุมคณะกรรมการสภานักเรียน</li>
+          <li>การรับฟังความคิดเห็นนักเรียน</li>
+          <li>ระบบตรวจสอบภายใน</li>
+          <li>การสื่อสารภายในองค์กร</li>
+        </ul>
+      </div>
+    </div>
+    <div id="panel-c" class="indicator-panel">
+      <div class="indicator-content">
+        <h3>⭐ Positive Discipline — สร้างวินัยเชิงบวก</h3>
+        <ul class="indicator-list">
+          <li>กิจกรรมสร้างวินัยในโรงเรียน</li>
+          <li>โครงการ Student Coach</li>
+          <li>ระบบ Buddy System</li>
+          <li>การสร้างแรงจูงใจเชิงบวก</li>
+          <li>การพัฒนาพฤติกรรมที่เหมาะสม</li>
+        </ul>
+      </div>
+    </div>
+    <div id="panel-d" class="indicator-panel">
+      <div class="indicator-content">
+        <h3>💚 Public Mind — สร้างจิตสาธารณะ</h3>
+        <ul class="indicator-list">
+          <li>กิจกรรมจิตอาสา</li>
+          <li>การช่วยเหลือชุมชน</li>
+          <li>การอนุรักษ์สิ่งแวดล้อม</li>
+          <li>กิจกรรมเพื่อสังคม</li>
+          <li>การสร้างเครือข่ายชุมชน</li>
+        </ul>
+      </div>
+    </div>
+    <div id="panel-e" class="indicator-panel">
+      <div class="indicator-content">
+        <h3>💡 Innovation / Best Practice — นวัตกรรมและแนวปฏิบัติที่เป็นเลิศ</h3>
+        <ul class="indicator-list">
+          <li>ชื่อผลงาน / โครงการนวัตกรรม</li>
+          <li>แนวคิดและที่มาของนวัตกรรม</li>
+          <li>ปัญหาที่พบและแนวทางแก้ไข</li>
+          <li>วิธีดำเนินงานและขั้นตอน</li>
+          <li>นวัตกรรมที่พัฒนาขึ้น</li>
+          <li>ผลลัพธ์และการขยายผล</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="container">
+    <div class="section-label">Reflection</div>
+    <h2 class="section-title">สิ่งที่<span class="accent">เรียนรู้</span></h2>
+    <div class="divider"></div>
+    <div class="reflection-box">
+      <p class="reflection-quote">
+        "เราได้เรียนรู้ว่าประชาธิปไตยไม่ใช่เพียงการเลือกตั้ง แต่คือการรับฟังความคิดเห็นของทุกคน
+        และร่วมกันสร้างพื้นที่ที่ทุกคนมีคุณค่า ดั่งคำขวัญของโรงเรียน
+        พึงรักษาความดีของตนไว้ ดุจเกลือรักษาความเค็ม"
+      </p>
+      <div class="reflection-aspects">
+        <div class="reflection-aspect">
+          <h4>📚 สิ่งที่ได้เรียนรู้</h4>
+          <p>ทักษะการนำ การทำงานร่วม และการรับฟัง</p>
+        </div>
+        <div class="reflection-aspect">
+          <h4>🔄 ความเปลี่ยนแปลง</h4>
+          <p>นักเรียนมีความรับผิดชอบและจิตสาธารณะเพิ่มขึ้น</p>
+        </div>
+        <div class="reflection-aspect">
+          <h4>💜 ความภาคภูมิใจ</h4>
+          <p>ได้ทำประโยชน์ให้กับโรงเรียน น.ว.ค. และชุมชน</p>
+        </div>
+        <div class="reflection-aspect">
+          <h4>🚧 ปัญหา & อุปสรรค</h4>
+          <p>การประสานงานและการบริหารเวลา</p>
+        </div>
+        <div class="reflection-aspect">
+          <h4>🚀 สิ่งที่อยากพัฒนา</h4>
+          <p>การสื่อสารและการมีส่วนร่วมของนักเรียนทั้งหมด</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENT -->
+<section id="achievement">
+  <div class="container">
+    <div class="section-label">Achievement</div>
+    <h2 class="section-title">ผลงาน รางวัล<span class="accent"> & ความภาคภูมิใจ</span></h2>
+    <div class="divider"></div>
+    <div class="achievement-grid">
+      <div class="achievement-card"><div class="ac-icon">🏆</div><h4>รางวัล</h4></div>
+      <div class="achievement-card"><div class="ac-icon">📜</div><h4>เกียรติบัตร</h4></div>
+      <div class="achievement-card"><div class="ac-icon">⭐</div><h4>ผลงานเด่น</h4></div>
+      <div class="achievement-card"><div class="ac-icon">📸</div><h4>ภาพความสำเร็จ</h4></div>
+      <div class="achievement-card"><div class="ac-icon">📰</div><h4>ข่าวประชาสัมพันธ์</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">ติดต่อ<span class="accent">ผู้จัดทำ</span></h2>
+    <div class="divider"></div>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="cc-icon">🏫</div>
+        <h4>โรงเรียนนครนายกวิทยาคม</h4>
+        <p>Nakhonnayok Witthayakhom School<br>จังหวัดนครนายก<br>สพฐ. กระทรวงศึกษาธิการ</p>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">👩‍💼</div>
+        <h4>ผู้อำนวยการ</h4>
+        <p>นางสาวสุกัญญา เพาะบุญ<br>ผู้อำนวยการโรงเรียนนครนายกวิทยาคม</p>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">👩‍🏫</div>
+        <h4>คณะครูที่ปรึกษา</h4>
+        <p>คณะครูที่ปรึกษาคณะกรรมการสภานักเรียน<br>โรงเรียนนครนายกวิทยาคม</p>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">👥</div>
+        <h4>คณะกรรมการสภานักเรียน น.ว.ค.</h4>
+        <p>นักเรียน 2,765 คน<br>คณะกรรมการสภานักเรียนโรงเรียนนครนายกวิทยาคม</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2568 NWK SC e-Portfolio | โรงเรียนนครนายกวิทยาคม (น.ว.ค.) | จังหวัดนครนายก</p>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.indicator-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id'); });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--pink-light)' : ''; });
+  });
+</script>
+</body>
+</html>
