@@ -322,6 +322,31 @@
     .nav-links { display: none; }
     section { padding: 3.5rem 1.2rem; }
   }
+
+  /* LIGHTBOX */
+  .lightbox-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    align-items: center; justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 92vw; max-height: 92vh;
+    object-fit: contain; border-radius: 8px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    cursor: default;
+  }
+  .lightbox-close {
+    position: fixed; top: 1rem; right: 1.5rem;
+    color: white; font-size: 2.5rem; cursor: pointer;
+    line-height: 1; user-select: none; z-index: 10000;
+  }
+  .lightbox-close:hover { color: var(--pink-light); }
+  .gallery-img {
+    cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gallery-img:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
 </style>
 </head>
 <body>
@@ -501,11 +526,11 @@
           <li>ภาพกิจกรรมการเลือกตั้ง</li>
         </ul>
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:0.8rem; margin-top:1.2rem;">
-          <img src="a-election1.jpg" alt="กิจกรรมเลือกตั้ง 1" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="a-election2.jpg" alt="กิจกรรมเลือกตั้ง 2" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="a-election3.jpg" alt="กิจกรรมเลือกตั้ง 3" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="a-election4.jpg" alt="กิจกรรมเลือกตั้ง 4" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="a-election5.jpg" alt="กิจกรรมเลือกตั้ง 5" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('a-election1.jpg','กิจกรรมเลือกตั้ง 1')" src="a-election1.jpg" alt="กิจกรรมเลือกตั้ง 1" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('a-election2.jpg','กิจกรรมเลือกตั้ง 2')" src="a-election2.jpg" alt="กิจกรรมเลือกตั้ง 2" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('a-election3.jpg','กิจกรรมเลือกตั้ง 3')" src="a-election3.jpg" alt="กิจกรรมเลือกตั้ง 3" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('a-election4.jpg','กิจกรรมเลือกตั้ง 4')" src="a-election4.jpg" alt="กิจกรรมเลือกตั้ง 4" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('a-election5.jpg','กิจกรรมเลือกตั้ง 5')" src="a-election5.jpg" alt="กิจกรรมเลือกตั้ง 5" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
         </div>
       </div>
     </div>
@@ -532,11 +557,11 @@
           <li>การพัฒนาพฤติกรรมที่เหมาะสม</li>
         </ul>
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:0.8rem; margin-top:1.2rem;">
-          <img src="c-discipline1.jpg" alt="กิจกรรม C 1" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="c-discipline2.jpg" alt="กิจกรรม C 2" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="c-discipline3.jpg" alt="กิจกรรม C 3" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="c-discipline4.jpg" alt="กิจกรรม C 4" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
-          <img src="c-discipline5.jpg" alt="กิจกรรม C 5" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('c-discipline1.jpg','กิจกรรม C 1')" src="c-discipline1.jpg" alt="กิจกรรม C 1" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('c-discipline2.jpg','กิจกรรม C 2')" src="c-discipline2.jpg" alt="กิจกรรม C 2" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('c-discipline3.jpg','กิจกรรม C 3')" src="c-discipline3.jpg" alt="กิจกรรม C 3" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('c-discipline4.jpg','กิจกรรม C 4')" src="c-discipline4.jpg" alt="กิจกรรม C 4" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
+          <img class="gallery-img" onclick="openLightbox('c-discipline5.jpg','กิจกรรม C 5')" src="c-discipline5.jpg" alt="กิจกรรม C 5" style="width:100%; border-radius:10px; object-fit:cover; aspect-ratio:4/3;" />
         </div>
       </div>
     </div>
@@ -671,6 +696,24 @@
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id'); });
     navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--pink-light)' : ''; });
   });
+
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+</div>
 </body>
 </html>
