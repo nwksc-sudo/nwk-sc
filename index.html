@@ -389,6 +389,15 @@
     .hamburger { display: flex; }
 
     section { padding: var(--space-lg) var(--space-sm); }
+    #home::before {
+      background: linear-gradient(
+        to bottom,
+        rgba(20, 0, 50, 0.45) 0%,
+        rgba(20, 0, 50, 0.55) 40%,
+        rgba(15, 0, 40, 0.85) 75%,
+        rgba(15, 0, 40, 0.95) 100%
+      );
+    }
 
     .school-crest-img { width: 150px; height: 150px; }
     .hero-nav-grid { flex-wrap: wrap; gap: 0.4rem; }
