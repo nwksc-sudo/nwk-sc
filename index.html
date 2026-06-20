@@ -449,11 +449,56 @@
     cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s;
   }
   .gallery-img:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+
+  /* MEMORIAL POPUP */
+  .popup-overlay {
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    animation: fadeInPop 0.5s ease;
+  }
+  @keyframes fadeInPop {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .popup-box {
+    position: relative;
+    max-width: min(820px, 95vw);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    animation: scalePop 0.4s ease;
+  }
+  @keyframes scalePop {
+    from { transform: scale(0.9); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .popup-box img { width: 100%; display: block; }
+  .popup-close {
+    position: absolute; top: 0.6rem; right: 0.8rem;
+    width: 2rem; height: 2rem;
+    background: rgba(0,0,0,0.6);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    color: white; font-size: 1.1rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    line-height: 1; transition: background 0.2s;
+  }
+  .popup-close:hover { background: rgba(255,255,255,0.2); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<!-- MEMORIAL POPUP -->
+<div class="popup-overlay" id="memorialPopup" onclick="closePopup(event)">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('memorialPopup').remove()">✕</button>
+    <img src="memorial.png" alt="น้อมรำลึกในพระมหากรุณาธิคุณ" />
+  </div>
+</div>
+
 <nav>
   <div class="nav-logo">
     <img src="logo.png" alt="น.ว.ค." style="height:28px;width:28px;object-fit:contain;" />
@@ -829,6 +874,19 @@
 </footer>
 
 <script>
+
+  function closePopup(e) {
+    if (e.target === document.getElementById('memorialPopup')) {
+      document.getElementById('memorialPopup').remove();
+    }
+  }
+  // Auto-close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const p = document.getElementById('memorialPopup');
+      if (p) p.remove();
+    }
+  });
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
