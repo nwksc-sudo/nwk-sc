@@ -465,34 +465,15 @@
 
 
   /* ACCORDION */
-  .acc-item {
-    border: 1px solid #E9D5FF;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-  .acc-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 1.2rem;
-    background: white;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.2s;
-  }
+  /* ACCORDION - single clean definition */
+  .acc-item { border: 1px solid #E9D5FF; border-radius: 12px; overflow: hidden; background: white; }
+  .acc-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: white; cursor: pointer; user-select: none; transition: background 0.2s; }
   .acc-header:hover { background: #FAF5FF; }
   .acc-header h3 { font-size: var(--text-base); color: var(--purple-dark); margin: 0; }
-  .acc-arrow {
-    font-size: 0.85rem; color: var(--pink);
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
-  .acc-item.open .acc-arrow { transform: rotate(180deg); }
-  .acc-body {
-    display: none;
-    padding: 0 1.2rem 1.2rem;
-    background: white;
-    border-top: 1px solid #F3E8FF;
-  }
-  .acc-item.open .acc-body { display: block; }
+  .acc-arrow { font-size: 0.85rem; color: var(--pink); transition: transform 0.3s; flex-shrink: 0; }
+  /* arrow rotation handled by JS */
+  .acc-body { display: none !important; padding: 0 1.2rem 1.2rem; background: white; border-top: 1px solid #F3E8FF; }
+  .acc-item.open > .acc-body { display: block !important; }
 
   /* MEMORIAL POPUP */
   .popup-overlay {
@@ -510,7 +491,6 @@
     position: relative;
     width: 100vw; height: 100vh;
     border-radius: 0;
-    overflow: hidden;
     display: flex; align-items: center; justify-content: center;
     animation: scalePop 0.4s ease;
   }
@@ -528,54 +508,17 @@
     color: white; font-size: 1.1rem;
     cursor: pointer; display: flex; align-items: center; justify-content: center;
     line-height: 1; transition: background 0.2s;
-  }
   .popup-close:hover { background: rgba(255,255,255,0.2); }
 
-  /* ACCORDION */
-  .acc-item { background:white; border-radius:14px; border:1px solid #E9D5FF; overflow:hidden; }
-  .acc-header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:1.1rem 1.4rem; cursor:pointer;
-    user-select:none; transition: background 0.2s;
-  }
-  .acc-header:hover { background: #FAF5FF; }
   .acc-title { font-size:var(--text-base); color:var(--purple-dark); font-weight:700; margin:0; }
-  .acc-arrow {
     font-size:1.1rem; color:var(--pink);
     transition: transform 0.3s; flex-shrink:0;
-  }
-  .acc-item.open .acc-arrow { transform: rotate(180deg); }
-  .acc-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
     padding: 0 1.4rem;
-  }
-  .acc-item.open .acc-body {
-    max-height: 2000px;
     padding: 0 1.4rem 1.4rem;
-  }
 
-  /* ACCORDION */
-  .acc-item { background:white; border-radius:14px; border:1px solid #E9D5FF; overflow:hidden; }
-  .acc-header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:1rem 1.4rem; cursor:pointer;
-    user-select:none; transition: background 0.2s;
-  }
-  .acc-header:hover { background: #FAF5FF; }
-  .acc-header h3 { font-size:var(--text-base); color:var(--purple-dark); margin:0; }
-  .acc-arrow {
     font-size:1.1rem; color:var(--purple-light);
     transition: transform 0.3s; flex-shrink:0;
-  }
-  .acc-item.open .acc-arrow { transform: rotate(180deg); }
-  .acc-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
     padding: 0 1.4rem;
-  }
-  .acc-item.open .acc-body {
-    max-height: 2000px;
     padding: 0.2rem 1.4rem 1.4rem;
   }
 </style>
@@ -920,7 +863,7 @@
     <div style="display:flex;flex-direction:column;gap:1rem;">
 
       <div class="acc-item" id="acc-award">
-        <div class="acc-header" onclick="toggleAcc('acc-award')">
+        <div class="acc-header" onclick="toggleAcc('acc-award', this)">
           <h3>🏆 รางวัล</h3>
           <span class="acc-arrow">▼</span>
         </div>
@@ -928,7 +871,7 @@
       </div>
 
       <div class="acc-item" id="acc-cert">
-        <div class="acc-header" onclick="toggleAcc('acc-cert')">
+        <div class="acc-header" onclick="toggleAcc('acc-cert', this)">
           <h3>📜 เกียรติบัตร</h3>
           <span class="acc-arrow">▼</span>
         </div>
@@ -936,7 +879,7 @@
       </div>
 
       <div class="acc-item" id="acc-outstanding">
-        <div class="acc-header" onclick="toggleAcc('acc-outstanding')">
+        <div class="acc-header" onclick="toggleAcc('acc-outstanding', this)">
           <h3>⭐ ผลงานเด่น</h3>
           <span class="acc-arrow">▼</span>
         </div>
@@ -944,7 +887,7 @@
       </div>
 
       <div class="acc-item" id="acc-success">
-        <div class="acc-header" onclick="toggleAcc('acc-success')">
+        <div class="acc-header" onclick="toggleAcc('acc-success', this)">
           <h3>📸 ภาพความสำเร็จ</h3>
           <span class="acc-arrow">▼</span>
         </div>
@@ -952,7 +895,7 @@
       </div>
 
       <div class="acc-item" id="acc-news">
-        <div class="acc-header" onclick="toggleAcc('acc-news')">
+        <div class="acc-header" onclick="toggleAcc('acc-news', this)">
           <h3>📰 ข่าวประชาสัมพันธ์</h3>
           <span class="acc-arrow">▼</span>
         </div>
@@ -1025,14 +968,24 @@
     item.classList.toggle('open');
   }
 
-  function toggleAcc(id) {
+  function toggleAcc(id, headerEl) {
     const item = document.getElementById(id);
     item.classList.toggle('open');
+    // Rotate only THIS arrow
+    const arrow = headerEl ? headerEl.querySelector('.acc-arrow') : null;
+    if (arrow) {
+      arrow.style.transform = item.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
   }
 
-  function toggleAcc(id) {
+  function toggleAcc(id, headerEl) {
     const item = document.getElementById(id);
     item.classList.toggle('open');
+    // Rotate only THIS arrow
+    const arrow = headerEl ? headerEl.querySelector('.acc-arrow') : null;
+    if (arrow) {
+      arrow.style.transform = item.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
   }
 
   function toggleMenu() {
