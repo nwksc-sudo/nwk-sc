@@ -463,6 +463,37 @@
   }
   .gallery-img:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
 
+
+  /* ACCORDION */
+  .acc-item {
+    border: 1px solid #E9D5FF;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .acc-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.2rem;
+    background: white;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .acc-header:hover { background: #FAF5FF; }
+  .acc-header h3 { font-size: var(--text-base); color: var(--purple-dark); margin: 0; }
+  .acc-arrow {
+    font-size: 0.85rem; color: var(--pink);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body {
+    display: none;
+    padding: 0 1.2rem 1.2rem;
+    background: white;
+    border-top: 1px solid #F3E8FF;
+  }
+  .acc-item.open .acc-body { display: block; }
+
   /* MEMORIAL POPUP */
   .popup-overlay {
     position: fixed; inset: 0; z-index: 99999;
@@ -499,6 +530,54 @@
     line-height: 1; transition: background 0.2s;
   }
   .popup-close:hover { background: rgba(255,255,255,0.2); }
+
+  /* ACCORDION */
+  .acc-item { background:white; border-radius:14px; border:1px solid #E9D5FF; overflow:hidden; }
+  .acc-header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem 1.4rem; cursor:pointer;
+    user-select:none; transition: background 0.2s;
+  }
+  .acc-header:hover { background: #FAF5FF; }
+  .acc-title { font-size:var(--text-base); color:var(--purple-dark); font-weight:700; margin:0; }
+  .acc-arrow {
+    font-size:1.1rem; color:var(--pink);
+    transition: transform 0.3s; flex-shrink:0;
+  }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.4rem;
+  }
+  .acc-item.open .acc-body {
+    max-height: 2000px;
+    padding: 0 1.4rem 1.4rem;
+  }
+
+  /* ACCORDION */
+  .acc-item { background:white; border-radius:14px; border:1px solid #E9D5FF; overflow:hidden; }
+  .acc-header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.4rem; cursor:pointer;
+    user-select:none; transition: background 0.2s;
+  }
+  .acc-header:hover { background: #FAF5FF; }
+  .acc-header h3 { font-size:var(--text-base); color:var(--purple-dark); margin:0; }
+  .acc-arrow {
+    font-size:1.1rem; color:var(--purple-light);
+    transition: transform 0.3s; flex-shrink:0;
+  }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 1.4rem;
+  }
+  .acc-item.open .acc-body {
+    max-height: 2000px;
+    padding: 0.2rem 1.4rem 1.4rem;
+  }
 </style>
 </head>
 <body>
@@ -829,42 +908,55 @@
 </section>
 
 <!-- ACHIEVEMENT -->
+
+
+<!-- ACHIEVEMENT -->
 <section id="achievement">
   <div class="container">
     <div class="section-label">Achievement</div>
     <h2 class="section-title">ผลงาน รางวัล<span class="accent"> & ความภาคภูมิใจ</span></h2>
     <div class="divider"></div>
     <!-- Achievement Section -->
-    <div style="display:flex;flex-direction:column;gap:2rem;">
+    <div style="display:flex;flex-direction:column;gap:1rem;">
 
-      <!-- รางวัล -->
-      <div style="background:white;border-radius:14px;padding:1.4rem;border:1px solid #E9D5FF;">
-        <h3 style="font-size:var(--text-base);color:var(--purple-dark);margin-bottom:0.3rem;">🏆 รางวัล</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-award1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach-award1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-director1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach-director1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-trophy1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-trophy1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-trophy2.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-trophy2.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-award-gov1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-award-gov1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-award-gov2.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-award-gov2.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+      <div class="acc-item" id="acc-award">
+        <div class="acc-header" onclick="toggleAcc('acc-award')">
+          <h3>🏆 รางวัล</h3>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-award1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach-award1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-director1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach-director1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-trophy1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-trophy1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-trophy2.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-trophy2.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-award-gov1.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-award-gov1.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-award-gov2.jpg" alt="รางวัล" class="gallery-img" onclick="openLightbox('ach2-award-gov2.jpg','รางวัล')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
 
-      <!-- เกียรติบัตร -->
-      <div style="background:white;border-radius:14px;padding:1.4rem;border:1px solid #E9D5FF;">
-        <h3 style="font-size:var(--text-base);color:var(--purple-dark);margin-bottom:0.3rem;">📜 เกียรติบัตร</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-cert1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-cert1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-honor1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-honor1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-selected.png" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-youth-selected.png','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-honor-cert1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach2-honor-cert1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-honor-cert2.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach2-honor-cert2.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+      <div class="acc-item" id="acc-cert">
+        <div class="acc-header" onclick="toggleAcc('acc-cert')">
+          <h3>📜 เกียรติบัตร</h3>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-cert1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-cert1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-honor1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-honor1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-selected.png" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach-youth-selected.png','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-honor-cert1.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach2-honor-cert1.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-honor-cert2.jpg" alt="เกียรติบัตร" class="gallery-img" onclick="openLightbox('ach2-honor-cert2.jpg','เกียรติบัตร')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
 
-      <!-- ผลงานเด่น -->
-      <div style="background:white;border-radius:14px;padding:1.4rem;border:1px solid #E9D5FF;">
-        <h3 style="font-size:var(--text-base);color:var(--purple-dark);margin-bottom:0.3rem;">⭐ ผลงานเด่น</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-to-be-number-one1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-to-be-number-one1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election3.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election3.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election3.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election3.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election4.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election4.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-meeting1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-meeting1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-meeting2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-meeting2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+      <div class="acc-item" id="acc-outstanding">
+        <div class="acc-header" onclick="toggleAcc('acc-outstanding')">
+          <h3>⭐ ผลงานเด่น</h3>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-to-be-number-one1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-to-be-number-one1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-election3.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach-election3.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election3.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election3.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-election4.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-election4.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-meeting1.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-meeting1.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-meeting2.jpg" alt="ผลงานเด่น" class="gallery-img" onclick="openLightbox('ach2-meeting2.jpg','ผลงานเด่น')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
 
-      <!-- ภาพความสำเร็จ -->
-      <div style="background:white;border-radius:14px;padding:1.4rem;border:1px solid #E9D5FF;">
-        <h3 style="font-size:var(--text-base);color:var(--purple-dark);margin-bottom:0.3rem;">📸 ภาพความสำเร็จ</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-youth-moi1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-moi1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-drug1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-drug1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-drug2.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-drug2.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national2.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national2.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national3.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national3.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+      <div class="acc-item" id="acc-success">
+        <div class="acc-header" onclick="toggleAcc('acc-success')">
+          <h3>📸 ภาพความสำเร็จ</h3>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-youth-moi1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-moi1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-drug1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-drug1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach-youth-drug2.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach-youth-drug2.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national1.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national1.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national2.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national2.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="ach2-national3.jpg" alt="ภาพความสำเร็จ" class="gallery-img" onclick="openLightbox('ach2-national3.jpg','ภาพความสำเร็จ')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
 
-      <!-- ข่าวประชาสัมพันธ์ -->
-      <div style="background:white;border-radius:14px;padding:1.4rem;border:1px solid #E9D5FF;">
-        <h3 style="font-size:var(--text-base);color:var(--purple-dark);margin-bottom:0.3rem;">📰 ข่าวประชาสัมพันธ์</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-news1.jpg" alt="ข่าวประชาสัมพันธ์" class="gallery-img" onclick="openLightbox('ach-news1.jpg','ข่าวประชาสัมพันธ์')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+      <div class="acc-item" id="acc-news">
+        <div class="acc-header" onclick="toggleAcc('acc-news')">
+          <h3>📰 ข่าวประชาสัมพันธ์</h3>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.7rem;margin-top:0.8rem;"><img src="ach-news1.jpg" alt="ข่าวประชาสัมพันธ์" class="gallery-img" onclick="openLightbox('ach-news1.jpg','ข่าวประชาสัมพันธ์')" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
 
     </div>
@@ -927,6 +1019,22 @@
       if (p) p.remove();
     }
   });
+
+  function toggleAcc(id) {
+    const item = document.getElementById('acc-' + id);
+    item.classList.toggle('open');
+  }
+
+  function toggleAcc(id) {
+    const item = document.getElementById(id);
+    item.classList.toggle('open');
+  }
+
+  function toggleAcc(id) {
+    const item = document.getElementById(id);
+    item.classList.toggle('open');
+  }
+
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
