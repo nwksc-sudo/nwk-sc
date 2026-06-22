@@ -323,7 +323,16 @@
   /* CONTACT */
   #contact { background: linear-gradient(135deg, var(--purple-dark), #3D0A6B) !important; }
   #contact .section-label { color: var(--pink-light); }
-  #contact .section-title { color: white; }
+  #contact .section-title {
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+  }
+  #contact .section-title .accent {
+    background: none;
+    -webkit-text-fill-color: var(--pink-light);
+    color: var(--pink-light);
+  }
   #contact .divider { background: linear-gradient(90deg, var(--pink), var(--purple-light)); }
   .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
   .contact-card {
