@@ -22,7 +22,7 @@
     --gold: #C9A227;
     --gold-light: #F5D76E;
 
-    /* Fluid scale — все размеры масштабируются автоматически */
+    /* Fluid scale */
     --space-xs:  clamp(0.25rem, 0.5vw,  0.5rem);
     --space-sm:  clamp(0.5rem,  1vw,    1rem);
     --space-md:  clamp(1rem,    2vw,    2rem);
@@ -350,16 +350,12 @@
   footer { background: #15002E; color: rgba(255,255,255,0.35); text-align: center; padding: var(--space-md); font-size: var(--text-xs); }
 
 
-  /* ===== ✨ VISUAL POLISH ===== */
-
-  /* Subtle dotted background texture on alternating sections */
+  /* ===== VISUAL POLISH ===== */
   section:nth-child(even) {
     background:
       radial-gradient(circle at 1px 1px, rgba(124,77,191,0.06) 1px, transparent 0) 0 0 / 22px 22px,
       var(--off-white);
   }
-
-  /* Section title gradient text + decorative underline */
   .section-title {
     position: relative;
     background: linear-gradient(120deg, var(--purple-dark), var(--purple-light));
@@ -384,15 +380,11 @@
     0%, 100% { left: 0; }
     50% { left: 33px; }
   }
-
-  /* Scroll reveal */
   .reveal {
     opacity: 0; transform: translateY(28px);
     transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* Card depth + hover lift on about cards */
   .about-card {
     transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s;
     box-shadow: 0 1px 3px rgba(91,45,142,0.06);
@@ -402,8 +394,6 @@
     box-shadow: 0 12px 28px rgba(124,77,191,0.18);
     border-left-color: var(--pink);
   }
-
-  /* Gallery image polish — zoom + shadow on hover */
   .gallery-img {
     transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, filter 0.35s;
     box-shadow: 0 2px 8px rgba(91,45,142,0.10);
@@ -414,22 +404,16 @@
     filter: saturate(1.1);
     z-index: 2;
   }
-
-  /* Indicator content card — softer, deeper */
   .indicator-content {
     box-shadow: 0 4px 24px rgba(91,45,142,0.08);
     transition: box-shadow 0.3s;
   }
-
-  /* Tab buttons — pill gradient when active */
   .tab-btn.active {
     background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
     box-shadow: 0 4px 14px rgba(214,51,132,0.35);
     transform: translateY(-1px);
   }
   .tab-btn { transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
-
-  /* Accordion header gradient hint + smoother */
   .acc-header {
     background: linear-gradient(90deg, #ffffff, #FCF8FF) !important;
     transition: background 0.3s, padding-left 0.3s;
@@ -440,12 +424,8 @@
     transition: box-shadow 0.3s, transform 0.3s;
   }
   .acc-item.open { box-shadow: 0 8px 28px rgba(124,77,191,0.16); }
-
-  /* Contact cards — glow lift */
   .contact-card { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s, border-color 0.3s, box-shadow 0.3s; }
   .contact-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(214,51,132,0.25); }
-
-  /* Demo items — gradient sweep on hover */
   .demo-item { position: relative; overflow: hidden; }
   .demo-item::after {
     content: ''; position: absolute; inset: 0;
@@ -453,15 +433,11 @@
     opacity: 0; transition: opacity 0.3s;
   }
   .demo-item:hover::after { opacity: 1; }
-
-  /* Subsection label pill in indicator A */
   .indicator-content p[style*="border-left"] {
     background: linear-gradient(90deg, #FCE7F3, transparent);
     padding-top: 0.4rem !important; padding-bottom: 0.4rem !important;
     border-radius: 0 8px 8px 0;
   }
-
-  /* Nav link underline animation */
   .nav-links a { position: relative; }
   .nav-links a::after {
     content: ''; position: absolute; left: 50%; bottom: 2px;
@@ -469,8 +445,6 @@
     transition: all 0.25s; transform: translateX(-50%);
   }
   .nav-links a:hover::after { width: 60%; }
-
-  /* Back-to-top button */
   #backToTop {
     position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 998;
     width: clamp(40px,5vw,48px); height: clamp(40px,5vw,48px);
@@ -485,10 +459,7 @@
   #backToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
   #backToTop:hover { transform: scale(1.1) translateY(-2px); }
 
-
   /* ===== RESPONSIVE ===== */
-
-  /* Hamburger button */
   .hamburger {
     display: none; flex-direction: column; gap: 5px;
     cursor: pointer; padding: 4px; background: none; border: none;
@@ -513,13 +484,10 @@
   }
   .mobile-menu a:hover { color: var(--pink-light); background: rgba(214,51,132,0.1); }
 
-  /* Large screens */
   @media (min-width: 1200px) {
     .container { max-width: 1100px; }
     .hero-nav-grid { max-width: 1100px; }
   }
-
-  /* Tablets */
   @media (max-width: 900px) {
     .school-strip { grid-template-columns: repeat(2, 1fr); }
     .about-grid { grid-template-columns: repeat(2, 1fr); }
@@ -527,13 +495,10 @@
     .reflection-aspects { grid-template-columns: repeat(2, 1fr); }
     .contact-cards { grid-template-columns: repeat(2, 1fr); }
   }
-
-  /* Mobile */
   @media (max-width: 640px) {
     nav { padding: 0 1rem; height: clamp(44px, 5vw, 60px); }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-
     section { padding: var(--space-lg) var(--space-sm); }
     #home::before {
       background: linear-gradient(
@@ -544,7 +509,6 @@
         rgba(15, 0, 40, 0.95) 100%
       );
     }
-
     .school-crest-img { width: 150px; height: 150px; }
     .hero-nav-grid { flex-wrap: wrap; gap: 0.4rem; }
     .hero-nav-card { min-width: calc(25% - 0.4rem); flex: none; padding: 0.6rem 0.4rem; font-size: 0.65rem; }
@@ -552,31 +516,21 @@
     .hero-motto { font-size: 0.75rem; }
     .hero-motto-th { font-size: 0.72rem; }
     .hero-sub { font-size: 0.85rem; }
-
     .school-strip { grid-template-columns: repeat(2, 1fr); padding: 1rem; gap: 0.8rem; }
     .strip-item .s-value { font-size: 0.8rem; }
-
     .about-grid { grid-template-columns: 1fr; }
-
     .demo-items { grid-template-columns: repeat(2, 1fr); }
-
     .indicator-tabs { gap: 0.3rem; }
     .tab-btn { padding: 0.35rem 0.6rem; font-size: 0.7rem; }
-
     .reflection-aspects { grid-template-columns: 1fr 1fr; }
     .reflection-box { padding: 1.5rem; }
     .reflection-box::before { font-size: 6rem; }
-
     .achievement-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-cards { grid-template-columns: 1fr; }
-
     .tl-step { min-width: 100px; padding: 0.7rem; }
     .tl-step .tl-text { font-size: 0.72rem; }
-
     footer { font-size: 0.7rem; padding: 1rem; }
   }
-
-  /* Very small screens */
   @media (max-width: 380px) {
     .hero-nav-card { min-width: calc(33% - 0.4rem); }
     .school-strip { grid-template-columns: 1fr; }
@@ -627,9 +581,6 @@
   }
   .gallery-img:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
 
-
-  /* ACCORDION */
-
   /* SLIDESHOW LIGHTBOX */
   .lightbox-prev, .lightbox-next {
     position: fixed;
@@ -658,13 +609,12 @@
     padding: 0.3rem 0.8rem; border-radius: 999px;
   }
 
-  /* ACCORDION - single clean definition */
+  /* ACCORDION */
   .acc-item { border: 1px solid #E9D5FF; border-radius: 12px; overflow: hidden; background: white; }
   .acc-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: white; cursor: pointer; user-select: none; transition: background 0.2s; }
   .acc-header:hover { background: #FAF5FF; }
   .acc-header h3 { font-size: var(--text-base); color: var(--purple-dark); margin: 0; }
   .acc-arrow { font-size: 0.85rem; color: var(--pink); transition: transform 0.3s; flex-shrink: 0; }
-  /* arrow rotation handled by JS */
   .acc-body {
     overflow: hidden;
     max-height: 0;
@@ -716,7 +666,7 @@
   }
   .popup-close:hover { background: rgba(255,255,255,0.2); }
 
-  /* ── SKELETON LOADING ── */
+  /* SKELETON LOADING */
   .gallery-img {
     background-color: #ece3f5;
     background-image: linear-gradient(100deg, rgba(233,216,240,0) 30%, rgba(255,255,255,0.7) 50%, rgba(233,216,240,0) 70%);
@@ -738,7 +688,7 @@
     .gallery-img { animation: none; }
   }
 
-  /* ── COLLAPSIBLE SUB-HEADERS ── */
+  /* COLLAPSIBLE SUB-HEADERS */
   .sub-toggle {
     cursor: pointer;
     user-select: none;
@@ -990,7 +940,7 @@
           <li>การพัฒนาพฤติกรรมที่เหมาะสม</li>
         </ul>
         <p class="sub-toggle open" onclick="toggleSub(this)" style="font-weight:700;color:var(--purple-dark);margin:1.2rem 0 0.5rem;font-size:var(--text-sm);border-left:3px solid var(--pink);padding-left:0.6rem;">คารวธรรม : กิจกรรมวันไว้ครู</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;"><img src="c-waikru1.jpg" alt="เวทีพิธีไหว้ครู น้อมจิตกตัญญุตาบูชาครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru2.jpg" alt="นักเรียนถือพานดอกไม้ในพิธีไหว้ครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru3.jpg" alt="คณะผู้บริหารและครูเดินเข้าสู่พิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru4.jpg" alt="ขบวนเชิญธงนำพิธีไหว้ครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru5.jpg" alt="วงโยธวาทิตบรรเลงในพิธีไหว้ครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru6.jpg" alt="นักเรียนนั่งร่วมพิธีไหว้ครูพร้อมเพรียง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru7.jpg" alt="บรรยากาศพิธีไหว้ครูพร้อมพรมแดง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru8.jpg" alt="ตัวแทนนักเรียนกล่าวในพิธีไหว้ครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru9.jpg" alt="นักเรียนกราบครูเพื่อแสดงความกตัญญู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru10.jpg" alt="ประธานในพิธีกล่าวให้โอวาท" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru11.jpg" alt="นักเรียนถือพานพุ่มดอกไม้" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-waikru12.jpg" alt="นักเรียนเชิญพานดอกไม้เข้าสู่พิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
-        <p class="sub-toggle open" onclick="toggleSub(this)" style="font-weight:700;color:var(--purple-dark);margin:1.2rem 0 0.5rem;font-size:var(--text-sm);border-left:3px solid var(--pink);padding-left:0.6rem;">คารวธรรม : กิจกรรมปัจฉิมนิเทศ</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;"><img src="c-patchim1.jpg" alt="นักเรียนในชุดผ้าไทยร่วมกับครูในพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim2.jpg" alt="ตัวแทนนักเรียนถือป้ายโรงเรียนนำขบวน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim3.jpg" alt="ครูรับช่อดอกไม้แสดงความยินดีในพิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim4.jpg" alt="ตัวแทนนักเรียนกล่าวบนเวทีพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim5.jpg" alt="นักเรียนมอบพวงมาลัยกราบคารวะครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim6.jpg" alt="ครูมอบช่อดอกไม้แก่นักเรียนรางวัลขวัญใจ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim7.jpg" alt="คณะครูและนักเรียนรางวัลขวัญใจถ่ายภาพร่วมกัน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim8.jpg" alt="ขบวนเชิญธงโรงเรียนสีชมพู-ม่วง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim9.jpg" alt="ผู้บริหารเดินบนพรมแดงเข้าสู่พิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim10.jpg" alt="สายสะพายรางวัลขวัญใจ ม.3 และ ม.6 บนพานทอง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim11.jpg" alt="คณะผู้บริหารเดินนำเข้าสู่พิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim12.jpg" alt="นักเรียนเชิญธงเดินขบวนในพิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim13.jpg" alt="พิธีกรนักเรียนดำเนินรายการบนเวที" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim14.jpg" alt="ครูและนักเรียนถ่ายภาพร่วมกับช่อดอกไม้และรางวัล" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim15.jpg" alt="ช่อดอกไม้แสดงความยินดีแก่นักเรียน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim16.jpg" alt="การแสดงนาฏศิลป์ไทยในพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
+        <p class="sub-toggle open" onclick="toggleSub(this)" style="font-weight:700;color:var(--purple-dark);margin:1.2rem 0 0.5rem;font-size:var(--text-sm);border-left:3px solid var(--pink);padding-left:0.6rem;">คารวธรรม : กิจกรรมปัจฉิมนิเทศ</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;"><img src="c-patchim1.jpg" alt="นักเรียนในชุดผ้าไทยร่วมกับครูในพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim2.jpg" alt="ตัวแทนนักเรียนถือป้ายโรงเรียนนำขบวน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim3.jpg" alt="ครูรับช่อดอกไม้แสดงความยินดีในพิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim4.jpg" alt="ตัวแทนนักเรียนกล่าวบนเวทีพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim5.jpg" alt="นักเรียนมอบพวงมาลัยกราบคารวะครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim6.jpg" alt="ครูมอบช่อดอกไม้แก่นักเรียนรางวัลขวัญใจ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim7.jpg" alt="คณะครูและนักเรียนรางวัลขวัญใจถ่ายภาพร่วมกัน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim8.jpg" alt="ขบวนเชิญธงโรงเรียนสีชมพู-ม่วง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim9.jpg" alt="ผู้บริหารเดินบนพรมแดงเข้าสู่พิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim10.jpg" alt="สายสะพายรางวัลขวัญใจ ม.3 และ ม.6 บนพานทอง" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim11.jpg" alt="คณะผู้บริหารเดินนำเข้าสู่พิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim12.jpg" alt="นักเรียนเชิญธงเดินขบวนในพิธี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim13.jpg" alt="พิธีกรนักเรียนดำเนินรายการบนเวที" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim14.jpg" alt="ครูและนักเรียนถ่ายภาพร่วมกับช่อดอกไม้และรางวัล" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim15.jpg" alt="ช่อดอกไม้แสดงความยินดีแก่นักเรียน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim16.jpg" alt="การแสดงนาฏศิลป์ไทยในพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim17.jpg" alt="การแสดงนาฏศิลป์ไทยบนเวทีพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim18.jpg" alt="ตัวแทนนักเรียนกล่าวความรู้สึกผ่านไมโครโฟน" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim19.jpg" alt="ตัวแทนนักเรียนหญิงกล่าวบทอำลาบนเวที" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim20.jpg" alt="พิธีกรดำเนินรายการในพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim21.jpg" alt="นักเรียนมอบพวงมาลัยกราบคารวะคุณครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim22.jpg" alt="นักเรียนรับช่อดอกไม้รางวัลขวัญใจจากคุณครู" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim23.jpg" alt="นักเรียนชายรับช่อดอกไม้แสดงความยินดี" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim24.jpg" alt="นักเรียนหญิงรับช่อดอกไม้รางวัลขวัญใจ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim25.jpg" alt="ขบวนเชิญธงสีชมพู-ม่วงนำพิธีปัจฉิมนิเทศ" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /><img src="c-patchim26.jpg" alt="บรรยากาศนักเรียนร่วมพิธีปัจฉิมนิเทศจำนวนมาก" class="gallery-img" onclick="lb(this)" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;cursor:zoom-in;" /></div>
       </div>
     </div>
     <div id="panel-d" class="indicator-panel">
@@ -1153,13 +1103,13 @@
 </footer>
 
 <script>
-  // ── POPUP ──
+  // POPUP
   function closePopup(e) {
     if (e.target === document.getElementById('memorialPopup'))
       document.getElementById('memorialPopup').remove();
   }
 
-  // ── HAMBURGER MENU ──
+  // HAMBURGER MENU
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
@@ -1167,7 +1117,7 @@
     document.getElementById('mobileMenu').classList.remove('open');
   });
 
-  // ── INDICATOR TABS ──
+  // INDICATOR TABS
   function showTab(id, btn) {
     document.querySelectorAll('.indicator-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1175,7 +1125,7 @@
     btn.classList.add('active');
   }
 
-  // ── ACCORDION ──
+  // ACCORDION
   function toggleAcc(id, headerEl) {
     const item = document.getElementById(id);
     const body = item.querySelector('.acc-body');
@@ -1202,7 +1152,7 @@
     if (arrow) arrow.style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0deg)';
   }
 
-  // ── COLLAPSIBLE SUB-HEADERS ──
+  // COLLAPSIBLE SUB-HEADERS
   function _grid(header) {
     var g = header.nextElementSibling;
     return (g && g.tagName === 'DIV') ? g : null;
@@ -1215,12 +1165,10 @@
     if (willOpen) {
       grid.classList.remove('collapsed');
       grid.style.maxHeight = grid.scrollHeight + 'px';
-      // allow natural growth after transition (images/resize)
       setTimeout(function () {
         if (header.classList.contains('open')) grid.style.maxHeight = 'none';
       }, 470);
     } else {
-      // set explicit height first so the transition has a starting point
       grid.style.maxHeight = grid.scrollHeight + 'px';
       void grid.offsetHeight; // reflow
       grid.classList.add('collapsed');
@@ -1233,7 +1181,6 @@
         var g = _grid(h);
         if (g) {
           g.classList.add('sub-grid');
-          // start open: no max-height limit
           g.style.maxHeight = 'none';
         }
       });
@@ -1243,7 +1190,7 @@
     } else { setup(); }
   })();
 
-  // ── SKELETON LOADING: mark images loaded ──
+  // SKELETON LOADING: mark images loaded
   (function initSkeleton() {
     function markLoaded(img) {
       img.classList.add('loaded');
@@ -1265,7 +1212,7 @@
     }
   })();
 
-  // ── LIGHTBOX SLIDESHOW ──
+  // LIGHTBOX SLIDESHOW
   let _imgs = [], _idx = 0;
 
   function lb(el) {
@@ -1334,7 +1281,7 @@
     _navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--pink-light)' : ''; });
   });
 
-  // ── Scroll reveal ──
+  // Scroll reveal
   const _revealEls = document.querySelectorAll('.container > *, .about-card, .demo-item, .acc-item, .contact-card');
   _revealEls.forEach(el => el.classList.add('reveal'));
   const _revObserver = new IntersectionObserver((entries) => {
@@ -1342,7 +1289,7 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   _revealEls.forEach(el => _revObserver.observe(el));
 
-  // ── Back to top ──
+  // Back to top
   const _btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (_btt) _btt.classList.toggle('show', window.scrollY > 500);
